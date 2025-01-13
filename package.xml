@@ -3,14 +3,15 @@
 <package format="3">
   <name>kompass_sim</name>
   <version>0.1.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="kabtoul.maria@gmail.com">ahr</maintainer>
-  <license>TODO: License declaration</license>
+  <description>Kompass Simulations and Tests</description>
+  <maintainer email="contact@automatikarobotics.com">Automatika Robotics</maintainer>
+  <license>MIT</license>
 
-  <test_depend>ament_copyright</test_depend>
-  <test_depend>ament_flake8</test_depend>
-  <test_depend>ament_pep257</test_depend>
-  <test_depend>python3-pytest</test_depend>
+  <depend>webots_ros2</depend>
+  <depend>rviz2</depend>
+  <depend>nav2_map_server</depend>
+  <depend>robot_localization</depend>
+  <depend>cartographer_ros</depend>
 
   <export>
     <build_type>ament_python</build_type>
