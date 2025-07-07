@@ -1,38 +1,64 @@
-# 2D Navigation Simulations and Tests
-This package provides launch and configuration files for 2D robot navigation in simulation
+# Kompass Simulation Suite
 
-## Install from source
+**kompass-sim** provides ready-to-use simulation and testing environments for 2D robot navigation, fully integrated with [Kompass](https://github.com/automatika-robotics/kompass) control stack. This repository is created for rapid testing, visualization, and validation of autonomous navigation algorithms.
 
-- Clone the repository into your ROS2 workspace
+## 📦 Installation
 
-```shell
-cd my_ros2_ws/src
+### 1. Clone the Repository
+
+```bash
+cd ~/ros2_ws/src
 git clone https://github.com/automatika-robotics/kompass-sim.git
 ```
 
-- Install the dependencies with `rosdep`
+### 2. Install Dependencies
 
-If this is the first time using `rosdep`, it must be initialized via:
+- If you're using `rosdep` for the first time:
 
-```shell
+```bash
 sudo rosdep init
 rosdep update
 ```
-then run:
 
-```shell
+- Then install the required dependencies:
+
+```bash
 rosdep install --from-paths src -y --ignore-src
 ```
 
-- Build and source your workspace
+### 3. Build the Workspace
 
-```shell
+```bash
+cd ~/ros2_ws
 colcon build
 source install/setup.bash
 ```
 
-- Now you can launch any of the available simulation directly using `ros2` command line:
 
-```shell
+## Running Simulations
+
+Launch a simulation environment (e.g., TurtleBot3 in Webots):
+
+```bash
 ros2 launch kompass_sim webots_turtlebot3.launch.py
 ```
+
+This brings up the robot in a Webots, ready to be controlled by Kompass (see KOmpass [quick start](https://automatika-robotics.github.io/kompass/tutorials/quick_start.html) instructions).
+
+
+## 📚 Related Projects
+
+- [kompass](https://github.com/automatika-robotics/kompass) – Event-driven, eay-to-use and GPU powered navigation stack
+- [kompass-core](https://github.com/automatika-robotics/kompass-core) – Core motion planning and control library
+
+
+## Copyright
+
+The code in this distribution is Copyright (c) 2025 Automatika Robotics unless explicitly indicated otherwise.
+
+Kompass is made available under the MIT license. Details can be found in the [LICENSE](LICENSE) file.
+
+
+## Contributing
+
+We welcome issues, feature requests, and PRs. Feel free to fork and improve!
