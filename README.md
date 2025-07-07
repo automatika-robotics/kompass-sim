@@ -1,6 +1,6 @@
 # Kompass Simulation Suite
 
-**kompass-sim** provides ready-to-use simulation and testing environments for 2D robot navigation, fully integrated with [Kompass](https://github.com/automatika-robotics/kompass) control stack. This repository is created for rapid testing, visualization, and validation of autonomous navigation algorithms.
+**kompass-sim** provides ready-to-use simulation and testing environments for 2D robot navigation, fully integrated with [Kompass](https://github.com/automatika-robotics/kompass) stack. This repository is created for rapid testing, visualization, and validation of autonomous navigation algorithms.
 
 ## 📦 Installation
 
