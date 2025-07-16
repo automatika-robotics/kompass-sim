@@ -12,6 +12,7 @@
   <depend>nav2_map_server</depend>
   <depend>robot_localization</depend>
   <depend>cartographer_ros</depend>
+  <depend>turtlebot3_gazebo</depend>
 
   <export>
     <build_type>ament_python</build_type>
