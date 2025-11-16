@@ -22,20 +22,11 @@ from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition
 from launch.substitutions.path_join_substitution import PathJoinSubstitution
 from launch import LaunchDescription
-from launch_ros.actions import LifecycleNode, Node
+from launch_ros.actions import Node
 import launch
 from ament_index_python.packages import (
     get_package_share_directory,
 )
-from launch.actions import (
-    EmitEvent,
-    LogInfo,
-    RegisterEventHandler,
-)
-from launch.events import matches_action
-from launch_ros.event_handlers import OnStateTransition
-from launch_ros.events.lifecycle import ChangeState
-from lifecycle_msgs.msg import Transition
 from webots_ros2_driver.webots_launcher import WebotsLauncher
 from webots_ros2_driver.webots_controller import WebotsController
 from webots_ros2_driver.wait_for_controller_connection import (
@@ -151,44 +142,6 @@ def generate_launch_description():
         nodes_to_start=ros_control_spawners + [localization_node],
     )
 
-    # Map server
-    map_server_config_path = os.path.join(
-        this_package_dir, "maps", "tiago_office.yaml"
-    )
-
-    map_server_node = LifecycleNode(
-        name="map_server",
-        namespace="",
-        package="nav2_map_server",
-        executable="map_server",
-        output="screen",
-        parameters=[{"yaml_filename": map_server_config_path}],
-    )
-
-    emit_event_to_configure_map_server = EmitEvent(
-        event=ChangeState(
-            lifecycle_node_matcher=matches_action(map_server_node),
-            transition_id=Transition.TRANSITION_CONFIGURE,
-        )
-    )
-
-    activate_map_server = RegisterEventHandler(
-        OnStateTransition(
-            target_lifecycle_node=map_server_node,
-            goal_state="inactive",
-            entities=[
-                LogInfo(
-                    msg="node 'Map Server' reached the 'inactive' state, 'activating'."
-                ),
-                EmitEvent(
-                    event=ChangeState(
-                        lifecycle_node_matcher=matches_action(map_server_node),
-                        transition_id=Transition.TRANSITION_ACTIVATE,
-                    )
-                ),
-            ],
-        )
-    )
 
     rviz_config_dir = os.path.join(
         this_package_dir,
@@ -229,8 +182,5 @@ def generate_launch_description():
                 on_exit=[launch.actions.EmitEvent(event=launch.events.Shutdown())],
             )
         ),
-        map_server_node,
-        emit_event_to_configure_map_server,
-        activate_map_server,
         rviz_node,
     ])
