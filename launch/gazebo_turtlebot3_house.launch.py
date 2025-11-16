@@ -89,6 +89,13 @@ def generate_launch_description():
         )
     )
 
+    footprint_publisher = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        output="screen",
+        arguments=["0", "0", "0", "0", "0", "0", "base_footprint", "/base_link"],
+    )
+
     rviz_config_dir = os.path.join(
         this_package_dir,
         "rviz",
@@ -108,6 +115,7 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
+            footprint_publisher,
             sim_launch_cmd,
             localization_node,
             map_server_node,

@@ -33,8 +33,8 @@ def generate_launch_description():
     ros_gz_sim = get_package_share_directory("ros_gz_sim")
 
     use_sim_time = LaunchConfiguration("use_sim_time", default="true")
-    x_pose = LaunchConfiguration("x_pose", default="2.0")
-    y_pose = LaunchConfiguration("y_pose", default="0.5")
+    x_pose = LaunchConfiguration("x_pose", default="0.1")
+    y_pose = LaunchConfiguration("y_pose", default="0.2")
 
     world = os.path.join(
         get_package_share_directory("turtlebot3_gazebo"),
@@ -63,7 +63,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(launch_file_dir, "robot_state_publisher.launch.py")
         ),
-        launch_arguments={"use_sim_time": use_sim_time, "publish_frequency": "1"}.items(),
+        launch_arguments={"use_sim_time": use_sim_time}.items(),
     )
 
     spawn_turtlebot_cmd = IncludeLaunchDescription(
