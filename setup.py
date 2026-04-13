@@ -27,7 +27,20 @@ setup(
             os.path.join("share", package_name, "maps"),
             glob(os.path.join("maps", "*.*")),
         ),
+        (
+            os.path.join("share", package_name, "worlds"),
+            glob(os.path.join("worlds", "*.*")),
+        ),
+        (
+            os.path.join("share", package_name, "resource"),
+            glob(os.path.join("resource", "*.*")),
+        ),
     ],
+    entry_points={
+        "console_scripts": [
+            "rgbd_publisher = kompass_sim.rgbd_publisher:main",
+        ],
+    },
     install_requires=["setuptools"],
     zip_safe=True,
     maintainer="Automatika Robotics",

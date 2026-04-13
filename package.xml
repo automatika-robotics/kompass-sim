@@ -12,6 +12,7 @@
   <depend>robot_localization</depend>
   <depend>cartographer_ros</depend>
   <depend>turtlebot3_gazebo</depend>
+  <depend>realsense2_camera_msgs</depend>
 
   <export>
     <build_type>ament_python</build_type>

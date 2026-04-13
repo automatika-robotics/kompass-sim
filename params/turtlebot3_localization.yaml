@@ -204,8 +204,8 @@ ekf_filter_node:
 # are ordered as x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az. Defaults to the matrix below
 #if unspecified.
 
-        initial_state: [-2.09453,  -0.0219054,  0.0,
-                      0.0,  0.0,  -1.5550022,
+        initial_state: [-5.78,  1.36,  0.0,
+                      0.0,  0.0,  0.0,
                       0.0,  0.0,  0.0,
                       0.0,  0.0,  0.0,
                       0.0,  0.0,  0.0]
